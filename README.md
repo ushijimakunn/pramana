@@ -82,3 +82,7 @@
 - メイン機能実装：1/15 - 2/15
 - β版をRUNTEQ内リリース（MVP）：2/15〆切
 - 本番リリース：3月1日
+
+### 画面遷移図
+
+[画面遷移図 figma](https://www.figma.com/file/nb1NUI4e0r3rX1AVupLkRX/ZEN_to_live_as_we_are?node-id=0%3A1&t=Dir3vXaWk7B7buyW-1)
