@@ -86,3 +86,7 @@
 ### 画面遷移図
 
 [画面遷移図 figma](https://www.figma.com/file/nb1NUI4e0r3rX1AVupLkRX/ZEN_to_live_as_we_are?node-id=0%3A1&t=Dir3vXaWk7B7buyW-1)
+
+### ER図
+
+![draw.io](https://user-images.githubusercontent.com/98957780/212532630-a36e3ffb-d899-4c51-b4b6-c65d0e199d0f.svg)
