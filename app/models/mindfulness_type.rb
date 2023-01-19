@@ -1,0 +1,2 @@
+class MindfulnessType < ApplicationRecord
+end
