@@ -1,0 +1,75 @@
+<div class='m-5 flex flex-col items-center'>
+  <div class='m-5 text-center'>
+    <div class='m-3 text-5xl font-bold' >まずはやってみよう</div>
+  </div>
+  <div class='m-5 text-center'>
+    <div class='m-3 text-5xl font-bold' >方法</div>
+    <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+  </div>
+  <div class='m-5 text-center'>
+    <div class='m-3 text-5xl font-bold' >心構え</div>
+    <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+  </div>
+</div>
+
+<div class='m-5 flex flex-row items-center'> 
+  <span class="countdown text-2xl">
+    <input type="number" class='' id='min' value="3">分
+    <input type="number" class='' id='sec' value="0">秒
+  </span>
+</div>
+<div class='m-5 flex flex-row items-center'> 
+    <input type="button" class='btn' id='start_btn' value="スタート" onclick="cntStart()">
+    <input type="button" class='btn' id='stop_btn' value="ストップ" onclick="cntStop()">
+</div>
+
+<script>
+  var timer1;
+
+  function cntStart() {
+    document.getElementById('start_btn').disabled=true;
+    timer1 = setInterval('countDown()',1000);
+  }
+
+  function cntStop(){
+    document.getElementById('start_btn').disabled=false;
+    clearInterval(timer1);
+  }
+
+  function countDown(){
+    var min = document.getElementById('min').value;
+    var sec = document.getElementById('sec').value;
+    if((min=='')&&(sec=='')){
+      alert('please input number');
+      reSet();
+    }
+    else{
+      if (min=="") min=0;
+      min = parseInt(min);
+      if (sec=="") sec=0;
+      sec = parseInt(sec);
+      
+      tmWrite(min*60 + sec - 1);
+    }
+    
+  }
+
+  function tmWrite(int){
+    int = parseInt(int);
+    if(int<=0){
+      reSet();
+      alert('time has come');
+    }else{
+      document.getElementById('min').value=Math.floor(int/60);
+      document.getElementById('sec').value=int % 60;
+    }
+  }
+
+  function reSet()
+  {
+    document.getElementById('min').value="0";
+    document.getElementById('sec').value="0";
+    document.getElementById('start_btn').disabled=false;
+    clearInterval(timer1);
+  }  
+</script>
