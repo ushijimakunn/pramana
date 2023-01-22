@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: 'static_pages#top'
   get 'trial_start', to: 'mindfuls#trial_start'
   get 'trial_end', to: 'mindfuls#trial_end'
+  
+  #ログイン後トップページ 
+  get 'menu', to: 'static_pages#menu'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

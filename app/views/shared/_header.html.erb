@@ -2,7 +2,7 @@
   <nav class="container px-6 py-4 mx-auto md:px-12">
     <div class="items-center justify-between md:flex">
       <div class="flex items-center justify-between">
-        <%= link_to 'pramana', root_path, class: 'text-white' %>
+        <%= link_to 'pramana', menu_path, class: 'text-white' %>
         <div class="md:hidden">
           <button class="text-white focus:outline-none">
             <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,8 +13,7 @@
         </div>
     </div>
     <div class="items-center hidden md:flex">
-        <%= link_to 'profile','#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to 'logout', logout_path, class: 'mx-3 text-lg text-white hover:text-gray-300', method: :delete %>
+        <%= link_to 'ログアウト', logout_path, class: 'mx-3 text-lg text-white hover:text-gray-300', method: :delete %>
         <%= link_to "#{current_user.name}さん",'#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
       </div>
     </div>
