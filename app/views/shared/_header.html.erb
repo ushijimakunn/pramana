@@ -13,9 +13,9 @@
         </div>
     </div>
     <div class="items-center hidden md:flex">
-        <%= link_to 'ログイン', login_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to '新規登録', new_user_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to '使い方','#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
+        <%= link_to 'profile','#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
+        <%= link_to 'logout', logout_path, class: 'mx-3 text-lg text-white hover:text-gray-300', method: :delete %>
+        <%= link_to "#{current_user.name}さん",'#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
       </div>
     </div>
   </nav>
