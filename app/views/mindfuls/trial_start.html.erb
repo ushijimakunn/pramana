@@ -58,7 +58,8 @@
     int = parseInt(int);
     if(int<=0){
       reSet();
-      alert('time has come');
+      alert('瞑想時間終了！');
+      window.location.href = '/trial_end'
     }else{
       document.getElementById('min').value=Math.floor(int/60);
       document.getElementById('sec').value=int % 60;
