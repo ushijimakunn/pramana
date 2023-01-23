@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'users/create'
   root to: 'static_pages#top'
   get 'trial_start', to: 'mindfuls#trial_start'
   get 'trial_end', to: 'mindfuls#trial_end'
+  get 'start', to: 'mindfuls#start'
+  get 'end', to: 'mindfuls#end'
+
+  # ログインユーザの瞑想実施機能
+  resources :mindfuls, only: %i[new create]
   
   #ログイン後トップページ 
   get 'menu', to: 'static_pages#menu'

@@ -3,8 +3,22 @@ class MindfulsController < ApplicationController
 
   def trial_end; end
 
-  def start; end
+  def index; end
+  
+  def new
+    @mindful = Mindful.new
+  end
 
-  def end; end
+  def create
+    @mindful = current_user.mindfuls.new(mindful_params)
+    @mindful.save!
+    redirect_to menu_path
+  end
+
+  private
+  
+  def mindful_params
+    params.require(:mindful).permit(:date, :time)
+  end
 
 end
