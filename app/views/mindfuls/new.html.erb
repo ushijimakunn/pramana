@@ -35,6 +35,7 @@
   <%= link_to 'ログインページへ', login_path %>
 </div>
 
+
 <script>
 
   var timer1;
@@ -75,6 +76,18 @@
       reSet();
       alert('瞑想時間を記録する！');
       // createメソッドを実行。mindful_paramsに値を渡したい。
+          $.ajax({
+            url: "/mindfuls/",
+            type: "POST",
+            data: {time : timer2},
+            datatype: "html",
+            success: function(data){
+              console.log('success')
+            },
+            error: function(data){
+              console.log('fails')
+            }
+          });
       console.log(timer2)
       // window.location.href = '/end'
     }else{
