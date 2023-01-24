@@ -12,8 +12,8 @@
 
 <div class='m-5 flex flex-row items-center'> 
   <span class="countdown text-2xl">
-    <input type="number" class='' id='min' value="3">分
-    <input type="number" class='' id='sec' value="0">秒
+    <input type="number" class='' id='min' value="0">分
+    <input type="number" class='' id='sec' value="5">秒
   </span>
 </div>
 <div class='m-5 flex flex-row items-center'> 
@@ -22,27 +22,28 @@
 </div>
 
 
-      <h1>時間登録</h1>
-      <%= form_with model: @mindful, local: true do |f| %>
-        <%= f.label :date %>
-        <%= f.date_field :date, class: 'form-control' %>
-        <%= f.label :time %>
-        <%= f.number_field :time, class: 'form-control' %>
-        <%= f.submit '登録'%>
-      <% end %>
+<h1>時間登録</h1>
+<%= form_with model: @mindful, local: true do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date, class: 'form-control' %>
+  <%= f.label :time %>
+  <%= f.number_field :time, class: 'form-control' %>
+  <%= f.submit '登録'%>
+<% end %>
 
-      <div class='text-center'>
-        <%= link_to 'ログインページへ', login_path %>
-      </div>
-
-
+<div class='text-center'>
+  <%= link_to 'ログインページへ', login_path %>
+</div>
 
 <script>
+
   var timer1;
+  var timer2;
 
   function cntStart() {
     document.getElementById('start_btn').disabled=true;
     timer1 = setInterval('countDown()',1000);
+    timer2 = document.getElementById('sec').value
   }
 
   function cntStop(){
@@ -73,7 +74,9 @@
     if(int<=0){
       reSet();
       alert('瞑想時間を記録する！');
-      window.location.href = '/end'
+      // createメソッドを実行。mindful_paramsに値を渡したい。
+      console.log(timer2)
+      // window.location.href = '/end'
     }else{
       document.getElementById('min').value=Math.floor(int/60);
       document.getElementById('sec').value=int % 60;
