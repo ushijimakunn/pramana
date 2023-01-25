@@ -8,53 +8,46 @@
     <div class='m-3 text-5xl font-bold' >心構え</div>
     <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
   </div>
-</div>
+  <div class='m-5 text-center'>
+    <div class='m-3 text-2xl font-bold' >瞑想時間を選択</div>
+    <p class='indent-4 max-w-xl font-mono' >
+      <input type="number" class='' id='mindful_min' value="10">分
+    </p>
+  </div>
 
-<div class='m-5 flex flex-row items-center'> 
-  <span class="countdown text-2xl">
-    <input type="number" class='' id='min' value="0">分
-    <input type="number" class='' id='sec' value="5">秒
+  <span class="font-mono text-2xl">
+    <span id='min'>00</span>m
+    <span id='sec'>00</span>s
   </span>
-</div>
-<div class='m-5 flex flex-row items-center'> 
+
+  <div class='m-5 flex flex-row items-center'> 
     <input type="button" class='btn' id='start_btn' value="スタート" onclick="cntStart()">
     <input type="button" class='btn' id='stop_btn' value="ストップ" onclick="cntStop()">
-</div>
+  </div>
 
-
-<h1>時間登録</h1>
-<%= form_with model: @mindful, local: true do |f| %>
-  <%= f.label :date %>
-  <%= f.date_field :date, class: 'form-control' %>
-  <%= f.label :time %>
-  <%= f.number_field :time, class: 'form-control' %>
-  <%= f.submit '登録'%>
-<% end %>
-
-<div class='text-center'>
-  <%= link_to 'ログインページへ', login_path %>
 </div>
 
 
 <script>
 
-  var timer1;
-  var timer2;
+  var time_interval;
+  var mindful_sec;
 
   function cntStart() {
     document.getElementById('start_btn').disabled=true;
-    timer1 = setInterval('countDown()',1000);
-    timer2 = document.getElementById('sec').value
+    time_interval = setInterval('countDown()',1000);
+    sec_mindful = parseInt(document.getElementById('mindful_min').value) * 60;
+    $('#min').replaceWith(`<span id='min'>${ $('#mindful_min').val() }<span>`);
   }
 
   function cntStop(){
     document.getElementById('start_btn').disabled=false;
-    clearInterval(timer1);
+    clearInterval(time_interval);
   }
 
   function countDown(){
-    var min = document.getElementById('min').value;
-    var sec = document.getElementById('sec').value;
+    var min = document.getElementById('min').innerHTML;
+    var sec = document.getElementById('sec').innerHTML;
     if((min=='')&&(sec=='')){
       alert('please input number');
       reSet();
@@ -75,11 +68,11 @@
     if(int<=0){
       reSet();
       alert('瞑想時間を記録する！');
-      // createメソッドを実行。mindful_paramsに値を渡したい。
+      // createメソッドを実行。paramsに値を渡す。
           $.ajax({
             url: "/mindfuls/",
             type: "POST",
-            data: {time : timer2},
+            data: {time : sec_mindful},
             datatype: "html",
             success: function(data){
               console.log('success')
@@ -88,19 +81,19 @@
               console.log('fails')
             }
           });
-      console.log(timer2)
+      console.log(sec_mindful)
       // window.location.href = '/end'
     }else{
-      document.getElementById('min').value=Math.floor(int/60);
-      document.getElementById('sec').value=int % 60;
+      document.getElementById('min').innerHTML=Math.floor(int/60);
+      document.getElementById('sec').innerHTML=int % 60;
     }
   }
 
   function reSet()
   {
-    document.getElementById('min').value="0";
-    document.getElementById('sec').value="0";
+    document.getElementById('min').innerHTML="0";
+    document.getElementById('sec').innerHTML="0";
     document.getElementById('start_btn').disabled=false;
-    clearInterval(timer1);
+    clearInterval(time_interval);
   }  
 </script>
