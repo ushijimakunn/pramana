@@ -1,2 +1,22 @@
 瞑想お疲れ様！
 今日もいい一日ですね！
+
+<table>
+  <thead>
+    <tr>
+      <th>実施日</th>
+      <th>実施時間</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mindfuls.each do |mindful| %>
+      <tr>
+        <td><%= mindful.date %></td>
+        <td><%= mindful.time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+連続日数 ：
+トータル時間：

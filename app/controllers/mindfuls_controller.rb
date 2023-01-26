@@ -1,5 +1,7 @@
 class MindfulsController < ApplicationController
-  def index; end
+  def index
+    @mindfuls = current_user.mindfuls.all
+  end
   
   def new
     @mindful = Mindful.new
