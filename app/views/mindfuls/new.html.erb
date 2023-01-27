@@ -28,7 +28,7 @@
 </div>
 
 
-<%# <script>
+<script>
 
   var time_interval;
   var mindful_sec;
@@ -76,13 +76,13 @@
             datatype: "html",
             success: function(data){
               console.log('success')
+              window.location.href = '/mindfuls/show'
             },
             error: function(data){
               console.log('fails')
             }
           });
       console.log(sec_mindful)
-      // window.location.href = '/end'
     }else{
       document.getElementById('min').innerHTML=Math.floor(int/60);
       document.getElementById('sec').innerHTML=int % 60;
@@ -96,4 +96,4 @@
     document.getElementById('start_btn').disabled=false;
     clearInterval(time_interval);
   }  
-</script> %>
+</script>

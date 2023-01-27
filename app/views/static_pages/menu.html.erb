@@ -1,11 +1,12 @@
 <div class="m-5 text-center text-5xl font-bold">ログイン後トップページ</div>
+<div class="m-5 text-center text-5xl font-bold">本日はどんな瞑想を行いますか？</div>
 
 <div class='m-5 flex flex-col items-center'>
-  <div class='m-5 text-center'>
-    <div class='m-3 text-5xl font-bold' >タイマー</div>
-    <p class='indent-4' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-  </div>
-  <%= link_to 'START', new_mindful_path, class: 'btn ' %>
-
+  
+  <% @mindfulness_types.each do |mindfulness_type| %>
+    名前：<%= mindfulness_type.name %><br>
+    説明：<%= mindfulness_type.description %>
+    <%= link_to 'START', new_mindful_path, class: 'btn ' %>
+  <% end %>
 
 </div>

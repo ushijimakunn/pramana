@@ -3,5 +3,7 @@ class StaticPagesController < ApplicationController
 
   def top; end
 
-  def menu; end
+  def menu
+    @mindfulness_types = MindfulnessType.all
+  end
 end

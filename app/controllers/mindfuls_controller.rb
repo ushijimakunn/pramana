@@ -1,5 +1,7 @@
 class MindfulsController < ApplicationController
-  before_action :cal_mindfuls_time, only: %i[index]
+  before_action :login_required
+  before_action :cal_total_time, only: %i[show]
+  before_action :cal_consecutive_days, only: %i[show]
 
   def index; end
   
@@ -14,13 +16,15 @@ class MindfulsController < ApplicationController
     redirect_to mindfuls_path
   end
 
+  def show; end
+
   private
   
   # def mindful_params
   #   params.require(:mindful).permit(:date, :time)
   # end
 
-  def cal_mindfuls_time
+  def cal_total_time
     @mindfuls = current_user.mindfuls.all
     @total_time = 0
     @mindfuls.each do |mindful|
@@ -28,25 +32,23 @@ class MindfulsController < ApplicationController
     end
   end
 
+  #  今日を起点に、連続何日瞑想を行なっているかを計算
   def cal_consecutive_days
-    @number_of_consecutive_days = 0
-    １。 瞑想の最新実施日＝今日の時
-          カウントアップ
-          ないとき、終了
-    ２。 瞑想の最新実施日−１のレコードの実施日＝昨日の時
-          カウントする。
-        瞑想の最新実施日−１のレコードの実施日＝今日の時
-          カウントせず、次に進める
-        瞑想の最新実施日−１のレコードの実施日＝今日、昨日でない時
-          終了
-    ３。 瞑想の最新実施日−ｎのレコードの実施日＝今日ーｎの時
-          カウントする
-        瞑想の最新実施日−ｎのレコードの実施日＝今日ーｎ＋１の時
-          カウントせず、ｎを＋１する
-        他
-          終了
-
-
+    @mindfuls = current_user.mindfuls.all
+    @consecutive_days = 0
+    today = Date.today
+    n = 0
+    # レコードを回し、連続実施日数を計算
+    @mindfuls.reverse_each do |mindful|
+      if mindful.date == (today-n)
+        @consecutive_days += 1
+        n += 1
+      elsif mindful.date == (today-n+1) #前回瞑想時と同じ日の時
+        next
+      else 
+        break
+      end
+    end
   end
 
 end

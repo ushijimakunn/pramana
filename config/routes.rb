@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'end', to: 'mindfuls#end'
 
   # ログインユーザの瞑想実施機能
-  resources :mindfuls, only: %i[index new create]
+  resources :mindfuls, only: %i[index new create show]
   
   #ログイン後トップページ 
   get 'menu', to: 'static_pages#menu'
