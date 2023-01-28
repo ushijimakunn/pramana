@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../../assets/stylesheets/application.css" 
 import "jquery"
-import "test.js"  
+import "mindfuls"
 
 Rails.start()
 Turbolinks.start()
