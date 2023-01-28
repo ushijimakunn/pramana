@@ -1,5 +1,6 @@
 class MindfulsController < ApplicationController
   before_action :login_required
+  before_action :get_all_mindfuls, only: %i[index show]
   before_action :cal_total_time, only: %i[show]
   before_action :cal_consecutive_days, only: %i[show]
 
@@ -24,8 +25,12 @@ class MindfulsController < ApplicationController
   #   params.require(:mindful).permit(:date, :time)
   # end
 
-  def cal_total_time
+  def get_all_mindfuls
     @mindfuls = current_user.mindfuls.all
+  end
+
+  def cal_total_time
+    get_all_mindfuls
     @total_time = 0
     @mindfuls.each do |mindful|
       @total_time += mindful.time
@@ -34,7 +39,7 @@ class MindfulsController < ApplicationController
 
   #  今日を起点に、連続何日瞑想を行なっているかを計算
   def cal_consecutive_days
-    @mindfuls = current_user.mindfuls.all
+    get_all_mindfuls
     @consecutive_days = 0
     today = Date.today
     n = 0

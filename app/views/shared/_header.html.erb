@@ -13,8 +13,9 @@
         </div>
     </div>
     <div class="items-center hidden md:flex">
+        <%= link_to 'メニュー', menu_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
+        <%= link_to "瞑想実績", mindfuls_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
         <%= link_to 'ログアウト', logout_path, class: 'mx-3 text-lg text-white hover:text-gray-300', method: :delete %>
-        <%= link_to "#{current_user.name}さん", profile_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
       </div>
     </div>
   </nav>
