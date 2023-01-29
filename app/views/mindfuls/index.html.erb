@@ -1,6 +1,26 @@
+
+瞑想実績
+
+合計日数：<%= current_user.cal_total_date %>
+<br>
+合計時間    <%= current_user.cal_total_time / 60 / 60 / 24%>日
+          <%= current_user.cal_total_time / 60 / 60 %>時間
+          <%= current_user.cal_total_time / 60 %>分
+<br>
+現在の連続日数：<%= current_user.cal_consecutive_days %>日
+<br>
+あなたのランク：
+<br>
+
+カレンダー：
+
+<br>
+<br>
+<br>
+
+
 <% @mindfuls.each do |mindful| %>
   <%= mindful.date %>日
   <%= mindful.time %>秒
   <br>
 <% end %>
-
