@@ -6,7 +6,7 @@
   <% @mindfulness_types.each do |mindfulness_type| %>
     名前：<%= mindfulness_type.name %><br>
     説明：<%= mindfulness_type.description %>
-    <%= link_to 'START', new_mindful_path, class: 'btn ' %>
+    <%= link_to 'START', new_mindful_path(mindfulness_type_id: mindfulness_type.id), class: 'btn' %>
   <% end %>
 
 </div>

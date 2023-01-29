@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :mindfuls
+  has_many :mindfulness_types, through: :mindfuls
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -8,16 +9,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
-
-  # 瞑想時間の合計を計算（秒）
-  def cal_total_time
-    mindfuls = self.mindfuls.all
-    total_time = 0
-    mindfuls.each do |mindful|
-      total_time += mindful.time
-    end
-    return total_time
-  end
 
   #  連続何日瞑想を行なっているかを計算
   def cal_consecutive_days
@@ -38,7 +29,7 @@ class User < ApplicationRecord
     end
     return consecutive_days
   end
-
+  
   # 合計日数を計算
   def cal_total_date
     mindfuls = self.mindfuls.all
@@ -50,6 +41,25 @@ class User < ApplicationRecord
     return total_date
   end
   
+  # 瞑想時間の合計を計算（秒）
+  def cal_total_time
+    mindfuls = self.mindfuls.all
+    total_time = 0
+    mindfuls.each do |mindful|
+      total_time += mindful.time
+    end
+    return total_time
+  end
+
+  # 瞑想時間の内訳を計算(秒)
+  def cal_time_each_mindfulness_type
+    each_time_mind = {}
+    hash = self.mindfuls.group(:mindfulness_type_id).sum(:time)
+    hash.each{| key,value|
+      each_time_mind[MindfulnessType.find(key).name] = value
+    } 
+    return each_time_mind
+  end
   
 end
 

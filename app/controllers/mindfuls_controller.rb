@@ -9,8 +9,9 @@ class MindfulsController < ApplicationController
   end
 
   def create
-    a = params[:time]
-    @mindful = current_user.mindfuls.new(date: Date.current, time: a)
+    keep_time = params[:time]
+    keep_type_id = params[:type_id]
+    @mindful = current_user.mindfuls.new(date: Date.current, time: keep_time, mindfulness_type_id: keep_type_id)
     @mindful.save!
     redirect_to mindful_path(current_user)
   end

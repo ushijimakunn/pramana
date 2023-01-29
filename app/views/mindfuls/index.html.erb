@@ -7,6 +7,14 @@
           <%= current_user.cal_total_time / 60 / 60 %>時間
           <%= current_user.cal_total_time / 60 %>分
 <br>
+内訳 
+<br>
+<% current_user.cal_time_each_mindfulness_type.each do |k, v| %>
+  <%= k %>: <%= v %>秒
+  <br>
+<% end %>
+
+
 現在の連続日数：<%= current_user.cal_consecutive_days %>日
 <br>
 あなたのランク：
@@ -15,6 +23,8 @@
 <%= month_calendar events: @mindfuls do |date, mindfuls| %>
   <%= date.day %>
   <% mindfuls.each do |mindful| %>
-    <div><%= mindful.time/60 %>分</div>
+    <div><%= mindful.time/60 %>分<%= mindful.mindfulness_type.name %></div>
   <% end %>
 <% end %>
+
+

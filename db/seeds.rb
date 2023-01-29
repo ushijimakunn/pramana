@@ -1,7 +1,24 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+MindfulnessType.create!(
+  [
+    {
+      name: 'タイマー機能のみ',
+      description: '時間記録のみを行う'
+    },
+    {
+      name: 'ヴィパッサナー瞑想',
+      description: '物ごとをありのままに観察するという、インドの瞑想法の中で最古の瞑想法。自分の感情や感覚を、素直にひたすら観察し続ける。'
+    },
+    {
+      name: '慈悲の瞑想',
+      description: '私、他人、生物へ思いを馳せ、慈悲の心を養う。利他の精神を養う瞑想法'
+    },
+    {
+      name: 'サマタ瞑想',
+      description: 'ひとつのものごとへの集中を維持し続ける。自分の呼吸でも目の前のものでも、集中の対象は何でも良い。1つに絞って集中する。'
+    },
+    {
+      name: 'マハーサーティ瞑想',
+      description: '体を動かしながら行う瞑想法。常に動きながら実施できるので、長時間の瞑想が比較的簡単に行える。'
+    },
+  ]
+)
