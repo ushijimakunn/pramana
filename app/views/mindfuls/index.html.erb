@@ -12,15 +12,9 @@
 あなたのランク：
 <br>
 
-カレンダー：
-
-<br>
-<br>
-<br>
-
-
-<% @mindfuls.each do |mindful| %>
-  <%= mindful.date %>日
-  <%= mindful.time %>秒
-  <br>
+<%= month_calendar events: @mindfuls do |date, mindfuls| %>
+  <%= date.day %>
+  <% mindfuls.each do |mindful| %>
+    <div><%= mindful.time/60 %>分</div>
+  <% end %>
 <% end %>

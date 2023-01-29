@@ -89,4 +89,4 @@
 
 ### ER図
 
-![pramana drawio](https://user-images.githubusercontent.com/98957780/214034070-e2af2a70-afed-4e5d-a8d3-eeb3aec77b48.png)
+![pramana drawio](https://user-images.githubusercontent.com/98957780/215306927-c432e786-8b72-4d2b-8ec8-62429b8a66ea.png)
