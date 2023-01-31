@@ -4,13 +4,23 @@ document.addEventListener("turbolinks:load", function() {
     const startBtn =  document.getElementById('start_btn');
     const stopBtn =  document.getElementById('stop_btn');
     const resetBtn =  document.getElementById('reset_btn');
+
+    if(localStorage.getItem('start_time')){
+      startTime = localStorage.getItem('start_time');
+      nowTime = Date.now();
+      diffTime = nowTime - startTime;
+      console.log(diffTime+'m秒');
+    }else{
+      console.log('LocalStrageの値は空');
+    }
+    
     let numberStartBtn = 0; // スタートボタンのクリック回数を定義。
     let count; // カウントダウンタイマーの定義
     
     // スタートボタンを押した時の処理
     startBtn.addEventListener("click", event => {
       // 音声再生
-      const audio = document.getElementById('sound');
+      const audio = document.getElementById('audio');
       if (audio !== null) { audio.play(); }
 
       startBtn.disabled=true;
@@ -19,6 +29,8 @@ document.addEventListener("turbolinks:load", function() {
       if (numberStartBtn==1) {
         $('#min').replaceWith(`<span id='min'>${ $('#mindful_min').val() }<span>`);
         $('#sec').replaceWith(`<span id='sec'>${ $('#mindful_sec').val() }<span>`);
+        let today = Date.now();
+        localStorage.setItem('start_time', today);
       }
 
       // Rails側に渡す瞑想時間を定義（秒）
@@ -81,10 +93,27 @@ document.addEventListener("turbolinks:load", function() {
     // リセットボタンを押した時の処理
     resetBtn.addEventListener("click", event => {
       startBtn.disabled=false;
-      numberStartBtn = 0;
+      numberStartBtn = 0; //スタートボタン押した回数のリセット
+      localStorage.removeItem('start_time') // localStrageの値をリセット
       document.getElementById('min').innerHTML="0";
       document.getElementById('sec').innerHTML="0";
       clearInterval(count);
+    });
+
+    const stopAudioBtn =  document.getElementById('stop_audio');
+    const startAudioBtn =  document.getElementById('start_audio');
+    const audioFunc = document.getElementById('audio');
+    
+    // 音声ON/OFFの処理
+    stopAudioBtn.addEventListener("click", event => {
+      $('#stop_audio').hide();
+      $('#start_audio').show();
+      audioFunc.id = 'non_audio'
+    });
+    startAudioBtn.addEventListener("click", event => {
+      $('#stop_audio').show();
+      $('#start_audio').hide();
+      audioFunc.id = 'audio'
     });
   }
 });

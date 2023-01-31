@@ -19,6 +19,13 @@
   <span class="font-mono text-2xl">
     <span id='min'>00</span>m
     <span id='sec'>00</span>s
+    <button id='stop_audio'>
+      <i class="fa-solid fa-volume-high"></i>
+    </button>
+
+    <button id='start_audio' style='display: none;'>
+      <i class="fa-solid fa-volume-xmark"></i>
+    </button>
   </span>
 
   <div class='m-5 flex flex-row items-center'> 
@@ -27,8 +34,7 @@
     <input type="button" class='btn' id='reset_btn' value="リセット" >
   </div>
 
-  <%= audio_tag 'tin.mp3', id: 'sound' %>
-  <i class="fa-solid fa-volume-high"></i>
-  <i class="fa-solid fa-volume-xmark"></i>
+  <%= audio_tag 'tin.mp3', id: 'audio' %>
+
 
 </div>
