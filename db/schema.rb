@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_29_055243) do
+ActiveRecord::Schema.define(version: 2023_02_02_125809) do
 
   create_table "mindfulness_effects", force: :cascade do |t|
     t.string "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2023_01_29_055243) do
 
   create_table "mindfuls", force: :cascade do |t|
     t.date "date"
-    t.integer "time"
+    t.integer "time", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
