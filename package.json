@@ -1,6 +1,9 @@
 {
   "name": "zen-to-live-as-we-are",
   "private": true,
+  "resolutions": {
+    "postcss-preset-env": "^7.0.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
     "@fullhuman/postcss-purgecss": "4",
