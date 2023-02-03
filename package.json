@@ -9,7 +9,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "autoprefixer": "10.4.13",
-    "daisyui": "^2.47.0",
+    "daisyui": "^2.50.0",
     "jquery": "^3.6.3",
     "postcss": "8",
     "postcss-loader": "4",
