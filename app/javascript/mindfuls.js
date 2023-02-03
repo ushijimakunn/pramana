@@ -24,11 +24,11 @@ document.addEventListener("turbolinks:load", function() {
 
     // スタートボタンを押した時の処理
     startBtn.addEventListener("click", event => {
-      const mindfulMin = document.getElementById('mindful_min').value * 60;
-      const mindfulSec = document.getElementById('mindful_sec').value;
-      console.log(mindfulMin);
-      console.log(mindfulSec);
-      const mindfulTime = mindfulMin + mindfulSec;
+      let mindfulMin = parseInt(document.getElementById('mindful_min').value);
+      let mindfulSec = parseInt(document.getElementById('mindful_sec').value);
+      if(!mindfulMin){ mindfulMin = 0 }
+      if(!mindfulSec){ mindfulSec = 0 }
+      let mindfulTime = mindfulMin * 60 + mindfulSec;
       // 音声再生
       const audio = document.getElementById('audio');
       if (audio !== null) { audio.play(); }
@@ -36,8 +36,8 @@ document.addEventListener("turbolinks:load", function() {
 
       // カウントダウンの時間を表示,LocalStrageへ開始時間と瞑想時間を保存
       if (numberStartBtn==0) {
-        $('#min').replaceWith(`<span id='min'>${ $('#mindful_min').val() }<span>`);
-        $('#sec').replaceWith(`<span id='sec'>${ $('#mindful_sec').val() }<span>`);
+        $('#min').replaceWith(`<span id='min'>${ mindfulMin }<span>`);
+        $('#sec').replaceWith(`<span id='sec'>${ mindfulSec }<span>`);
         let today = Date.now();
         localStorage.setItem('start_date', today);
         localStorage.setItem('mindful_time', mindfulTime);
@@ -49,11 +49,11 @@ document.addEventListener("turbolinks:load", function() {
     });
   
     // ストップボタンを押した時の処理
-    stopBtn.addEventListener("click", event => {
-      startBtn.disabled=false;
-      numberStartBtn += 1;
-      clearInterval(count);
-    });
+    // stopBtn.addEventListener("click", event => {
+    //   startBtn.disabled=false;
+    //   numberStartBtn += 1;
+    //   clearInterval(count);
+    // });
   
     // リセットボタンを押した時の処理
     resetBtn.addEventListener("click", event => {
@@ -97,7 +97,6 @@ document.addEventListener("turbolinks:load", function() {
         
         // Rails側に渡す値を格納
         const data = {'time': mindfulTime, 'type_id': typeIdParams};
-        console.log(data);
         //音声再生
         const audio = document.getElementById('audio');
         if (audio !== null) { audio.play(); };
@@ -121,49 +120,6 @@ document.addEventListener("turbolinks:load", function() {
         });
       }
     }
-
-
-
-
-    // // リロードが入っても、カウントダウンを継続
-    // if(localStorage.getItem('start_time')){
-    //   startBtn.disabled=true;
-    //   // 開始時間をLocalStrageから取得
-    //   startDate = localStorage.getItem('start_time');
-    //   nowDate = Date.now();
-    //   diffTime = nowDate - startDate
-    //   const calcMin = Math.floor(diffTime / 1000 / 60) % 60;
-    //   const calcSec = Math.floor(diffTime / 1000) % 60;
-    //   const calcTime = calcMin * 60 + calcSec;
-    //   // 瞑想時間をHTMLから取得
-    //   const mindfulMin = parseInt(document.getElementById('mindful_min').value) * 60;
-    //   const mindfulSec = parseInt(document.getElementById('mindful_sec').value);
-    //   const mindfulTime = mindfulMin + mindfulSec;
-
-    //   //残り時間から処理を実行
-    //   const lastTime = mindfulTime - calcTime;
-    //   console.log(lastTime/60 +'分');
-    //   //瞑想設定時間ー経過時間＞０
-    //   if (lastTime >= 0){
-    //     document.getElementById("min").innerHTML = Math.floor(lastTime / 60);
-    //     document.getElementById("sec").innerHTML = Math.floor(lastTime % 60);
-    //     // カウントダウン処理
-    //     countFunc();
-    //     count = setInterval(countFunc,1000);
-    //   }else if(lastTime <= 0){
-    //     //  タイマーを書き換え,カウントダウン処理を継続
-    //     //＜＝0の時
-    //     //  瞑想終了のアラート＋経過時間＋超過時間をサーバー側に渡す
-    //     startBtn.disabled=false;
-    //     localStorage.removeItem('start_time') // localStrageの値をリセット
-    //     console.log(lastTime/60 +'分');
-    //     alert('時間超過したので、瞑想終了！！');
-    //   }
-    // }else{
-    //   console.log('LocalStrageの値は空');
-    // }
-    
-   
   }
 });
 
