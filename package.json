@@ -11,7 +11,7 @@
     "autoprefixer": "10.4.13",
     "daisyui": "^2.50.0",
     "jquery": "^3.6.3",
-    "postcss": "8",
+    "postcss": "^8.4.21",
     "postcss-loader": "4",
     "tailwindcss": "3.2.4",
     "turbolinks": "^5.2.0",
