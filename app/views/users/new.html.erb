@@ -12,7 +12,7 @@
     </div>
     <div class="m-5 form-control">
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "半角英数字７文字以上でご入力ください"  %>
+      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "半角英数字3文字以上でご入力ください"  %>
     </div>
     <div class="m-5 form-control">
       <%= f.label :password_confirmation %>
@@ -22,6 +22,6 @@
     <%= f.submit 'sign up', class: 'mx-5 w-25 btn btn-secondary rounded-full' %>
   <% end %>
   <div class='text-center'>
-    <%= link_to 'ログインページへ', login_path %>
+    <%= link_to 'ログインページへ', login_path, class: 'mx-2 link' %>
   </div>
 </div>

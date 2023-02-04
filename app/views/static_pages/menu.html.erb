@@ -1,12 +1,22 @@
-<div class="m-5 text-center text-5xl font-bold">ログイン後トップページ</div>
-<div class="m-5 text-center text-5xl font-bold">本日はどんな瞑想を行いますか？</div>
+<div class="m-5 text-center text-3xl "><%= current_user.name %>さん,こんにちは</div>
+<div class="m-5 text-center text-3xl ">本日はどんな瞑想を行いますか？</div>
 
-<div class='m-5 flex flex-col items-center'>
-  
+<div class='mx-20 my-5 flex flex-col items-center'>
   <% @mindfulness_types.each do |mindfulness_type| %>
-    名前：<%= mindfulness_type.name %><br>
-    説明：<%= mindfulness_type.description %>
-    <%= link_to 'START', new_mindful_path(mindfulness_type_id: mindfulness_type.id), class: 'btn' %>
+
+    <div class="m-5 card card-side shadow-xl w-full max-w-4xl">
+      <figure><%= image_tag 'mindfulness_woman.jpg', class: "w-56 min-h-full opacity-50"%></figure>
+      <div class="card-body w-56">
+        <h2 class="card-title"><%= mindfulness_type.name %></h2>
+        <p><%= mindfulness_type.description %></p>
+        <div class="card-actions justify-end">
+          <%= link_to 'TRY', new_mindful_path(mindfulness_type_id: mindfulness_type.id), class: 'btn btn-secondary w-20' %>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 
+
 </div>
+

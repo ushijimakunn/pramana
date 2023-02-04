@@ -1,25 +1,18 @@
-
-<div class="container">
-  <div class="row">
-    <div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1>ログイン</h1>
-      <%= form_with url: login_path, local: true do |f| %>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.text_field :email, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div>
-        <div class="actions">
-          <%= f.submit 'ログイン', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to '登録ページへ', new_user_path %>
-        <a href="#">パスワードをお忘れの方はこちら</a>
-      </div>
+<div class="m-5 flex flex-col items-center">
+  <div class='m-3 text-3xl'>ログイン</div>
+  <%= form_with url: login_path, class: 'w-full max-w-2xl', local: true do |f| %>
+    <div class="m-5 form-control">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'input input-bordered rounded-full', placeholder: "goudamas@lumbini.com" %>
     </div>
+    <div class="m-5 form-control">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "パスワード（3文字以上）" %>
+    </div>
+    <%= f.submit 'LOGIN', class: 'mx-5 w-24 btn btn-secondary rounded-full' %>
+  <% end %>
+  <div class='text-center'>
+    <%= link_to '登録ページへ', new_user_path, class: 'mx-2 link' %>
+    <%= link_to 'パスワードをお忘れの方はこちら', '#', class: 'mx-2 link' %>
   </div>
 </div>
