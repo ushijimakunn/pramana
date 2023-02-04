@@ -11,6 +11,8 @@ import "../../assets/stylesheets/application.css"
 import '@fortawesome/fontawesome-free/js/all';
 import "jquery"
 import "mindfuls"
+import "trial_mindfuls"
+import "header"
 
 Rails.start()
 Turbolinks.start()

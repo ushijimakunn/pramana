@@ -1,30 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1>ユーザー登録</h1>
-      <%= form_with model: @user, local: true do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
-        <%= f.submit '登録', class: 'btn btn-primary' %>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to 'ログインページへ', login_path %>
-      </div>
+<div class="m-5 flex flex-col items-center">
+  <div class='m-3 text-3xl'>ユーザー登録</div>
+  <%= form_with model: @user, class: 'w-full max-w-2xl', local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="m-5 form-control">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'input input-bordered rounded-full', placeholder: "Goudamas Siddhartha"%>
     </div>
+    <div class="m-5 form-control">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'input input-bordered rounded-full', placeholder: "goudamas@lumbini.com" %>
+    </div>
+    <div class="m-5 form-control">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "半角英数字７文字以上でご入力ください"  %>
+    </div>
+    <div class="m-5 form-control">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'input input-bordered rounded-full', placeholder: "確認のため、もう一度誤入力ください" %>
+    </div>
+    
+    <%= f.submit 'sign up', class: 'mx-5 w-25 btn btn-secondary rounded-full' %>
+  <% end %>
+  <div class='text-center'>
+    <%= link_to 'ログインページへ', login_path %>
   </div>
 </div>

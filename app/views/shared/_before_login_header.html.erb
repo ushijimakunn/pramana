@@ -1,22 +1,14 @@
-<header class="top-0 left-0 right-0 z-20 bg-indigo-500">
-  <nav class="container px-6 py-4 mx-auto md:px-12">
-    <div class="items-center justify-between md:flex">
-      <div class="flex items-center justify-between">
+<header class="top-0 left-0 right-0 z-10 bg-[#036635]">
+  <nav class="flex px-6 py-4">
+    <div class="flex-1">
         <%= link_to 'pramana', root_path, class: 'text-white' %>
-        <div class="md:hidden">
-          <button class="text-white focus:outline-none">
-            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              </path>
-            </svg>
-          </button>
-        </div>
     </div>
-    <div class="items-center hidden md:flex">
+    <div class="justify-end">
         <%= link_to 'ログイン', login_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
         <%= link_to '新規登録', new_user_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to '使い方','#', class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-      </div>
+        <%= link_to '#', class: 'mx-3 text-lg text-white hover:text-gray-300' do %>
+          <i class="fa-solid fa-circle-info"></i>
+        <% end %>
     </div>
   </nav>
 </header>
