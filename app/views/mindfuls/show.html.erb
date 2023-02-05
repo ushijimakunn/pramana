@@ -1,9 +1,32 @@
-瞑想お疲れ様！
-今日もいい一日ですね！
-<br>
-<%= @mindfuls.last.time %>秒を完了 <br>
-連続<%= current_user.cal_consecutive_days %>日達成 <br>
-Total瞑想時間<%= @current_user.cal_total_time %>秒 <br>
+<div class="m-5 flex flex-col items-center">
+  <div class='m-3 text-3xl'> 本日の瞑想 </div>
+  
+  <%= image_tag 'meditate_2.png', class: "w-16 rounded-full"%>
+  
+  <div class='m-3 text-2xl'> 
+    <%= @mindfuls.last.time / 60 %>m
+    <%= @mindfuls.last.time %>s
+    を完了 
+  </div>
+  
+  <div class='m-3 text-2xl'> 
+    連続 <%= current_user.cal_consecutive_days %> 日達成 
+  </div>
 
-期待できる効果<br>
-慈悲の瞑想 ：tesuto
+  <div class="m-3 card max-w-4xl bg-base-100 shadow-xl">
+    <div class="card-body grid justify-items-center">
+      <div class="text-xl items-center">
+        期待できる効果
+      </div>
+      <ul class='my-2 '>
+        <li class='items-start'>If a dog chews?</li>
+        <li >If a dog chews shoes whose shoes does he choose?</li>
+        <li >If a dog chews shoes whose shoes does he choose?</li>
+        <li >If a dog chews shoes whose shoes does he choose?</li>
+      </ul>
+    </div>
+  </div>
+
+  <%= link_to 'これまでの瞑想記録を見る', mindfuls_path, class: 'm-3 link link-primary' %>
+
+</div>

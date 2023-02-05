@@ -1,10 +1,18 @@
-<h1>プロフィール編集</h1>
-<%= form_with model: @user, url: profile_path, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email%>
-
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<div class="m-5 flex flex-col items-center">
+  <div class='m-3 text-3xl'>プロフィール編集</div>
+  <%= form_with model: @user, url: profile_path, class: 'w-full max-w-2xl', local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="m-5 form-control">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'input input-bordered rounded-full'%>
+    </div>
+    <div class="m-5 form-control">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'input input-bordered rounded-full' %>
+    </div>
+    <%= f.submit 'submit', class: 'mx-5 w-20 btn btn-secondary rounded-full' %>
+  <% end %>
+  <div class='text-center'>
+    <%= link_to 'メニューページへ', menu_path, class: 'mx-2 link link-primary' %>
+  </div>
+</div>

@@ -1,30 +1,49 @@
+<div class="m-5 flex flex-col items-center">
 
-瞑想実績
+  <div class='m-3 text-3xl'> あなたの瞑想記録 </div>
 
-合計日数：<%= current_user.cal_total_date %>
-<br>
-合計時間    <%= current_user.cal_total_time / 60 / 60 / 24%>日
-          <%= current_user.cal_total_time / 60 / 60 %>時間
-          <%= current_user.cal_total_time / 60 %>分
-<br>
-内訳 
-<br>
-<% current_user.cal_time_each_mindfulness_type.each do |k, v| %>
-  <%= k %>: <%= v %>秒
-  <br>
-<% end %>
+  <div class='m-3 text-2xl'> 
+    合計日数：<%= current_user.cal_total_date %> d
+  </div>
 
+  <div class='m-3 text-2xl'> 
+    合計時間：    
+    <%= current_user.cal_total_time[0]%>d
+    <%= current_user.cal_total_time[1] %>h
+    <%= current_user.cal_total_time[2]%>m
+  </div>
 
-現在の連続日数：<%= current_user.cal_consecutive_days %>日
-<br>
-あなたのランク：
-<br>
+  <table class="table">
+    <tbody>
+      <% current_user.cal_time_each_mindfulness_type.each do |k, v| %>
+        <tr>
+          <td> <%= k %> </td>
+          <td>: <%= v/24/60/60 %>d <%= v/60/60 %>h </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= month_calendar events: @mindfuls do |date, mindfuls| %>
-  <%= date.day %>
-  <% mindfuls.each do |mindful| %>
-    <div><%= mindful.time/60 %>分<%= mindful.mindfulness_type.name %></div>
+  <div class='m-3 text-2xl'> 
+    あなたのランク：
+  </div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td> 名称</td>
+        <td> 説明</td>
+        <td> 目安時間</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <%= month_calendar events: @mindfuls do |date, mindfuls| %>
+    <%= date.day %>
+    <% mindfuls.each do |mindful| %>
+      <div><%= mindful.time/60 %>m <%= mindful.mindfulness_type.name %></div>
+    <% end %>
   <% end %>
-<% end %>
 
+</div>
 

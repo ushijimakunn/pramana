@@ -1,7 +1,7 @@
 MindfulnessType.create!(
   [
     {
-      name: 'タイマー機能のみ',
+      name: 'タイマー',
       description: '時間記録のみを行う'
     },
     {
