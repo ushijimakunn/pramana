@@ -5,10 +5,29 @@ document.addEventListener("turbolinks:load", function() {
     const endtBtn = document.getElementById('trial_end_btn');
     const resetBtn = document.getElementById('trial_reset_btn');
     let count;
+
+    // 音声ON/OFFの処理
+    const stopAudioBtn =  document.getElementById('stop_audio');
+    const startAudioBtn =  document.getElementById('start_audio');
+    const audioFunc = document.getElementById('non_audio');
+    stopAudioBtn.addEventListener("click", event => {
+      $('#stop_audio').hide();
+      $('#start_audio').show();
+      audioFunc.id = 'non_audio'
+    });
+    startAudioBtn.addEventListener("click", event => {
+      $('#stop_audio').show();
+      $('#start_audio').hide();
+      audioFunc.id = 'audio'
+    });
     
     $('#trial_start_btn').on('click', function(){
       $("#trial_start_btn").hide();
       $("#trial_stop_btn").show();
+      // 音声再生
+      const audio = document.getElementById('audio');
+      if (audio !== null) { audio.play(); }
+
       countDown();
       count = setInterval(countDown,1000);
     });
@@ -40,6 +59,10 @@ document.addEventListener("turbolinks:load", function() {
       if (!sec) sec=0;
       let mindfulTime = min*60 + sec - 1;
       if(mindfulTime <= 0){
+        // 音声再生
+        const audio = document.getElementById('audio');
+        if (audio !== null) { audio.play(); }
+        
         clearInterval(count);
         alert('瞑想終了');
         window.location.href = '/end';

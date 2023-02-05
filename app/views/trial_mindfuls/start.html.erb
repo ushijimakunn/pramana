@@ -11,14 +11,24 @@
     <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
   </div>
 
-  <div class="m-5 font-mono">
+  <div class="m-3 font-mono">
     <input type="number" class='mx-3 input input-bordered w-28 text-xl rounded-xl' id='min' value="3">
     m
     <input type="number" class='mx-3 input input-bordered w-28 text-xl rounded-xl' id='sec' value="0">
     s
   </div>
 
-  <div class="m-5">
+  <button class="m-3" id='stop_audio' style='display: none;'>
+    <i class="fa-solid fa-volume-high fa-xl"></i>
+  </button>
+
+  <button class="m-3" id='start_audio' >
+    <i class="fa-solid fa-volume-xmark fa-xl"></i>
+  </button>
+
+  <%= audio_tag 'tin.mp3', id: 'non_audio' %>
+
+  <div class="m-3">
       <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='trial_start_btn' value="START" >
       <input type="button" class='mx-4 w-20 rounded-full btn btn-accent' id='trial_stop_btn' value="STOP"' style='display: none;'>
       <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='trial_end_btn' value="END"' >
