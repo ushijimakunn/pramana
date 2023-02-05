@@ -1,11 +1,18 @@
+const { event } = require("jquery");
+
 document.addEventListener("turbolinks:load", function() {
   // 瞑想実施ページの処理を記載
   if(document.URL.match('/mindfuls/new')) {
     const startBtn =  document.getElementById('start_btn');
     const stopBtn =  document.getElementById('stop_btn');
+    const endBtn =  document.getElementById('end_btn');
     const resetBtn =  document.getElementById('reset_btn');
     let numberStartBtn = 0; // スタートボタンのクリック回数を定義。
     let count; // カウントダウンタイマーの定義
+
+    // Rails側に渡すmindfulness_typeのIDをクエリ文字列から取得
+    const searchParams = new URLSearchParams(window.location.search);
+    const typeIdParams = searchParams.get('mindfulness_type_id');
 
     // 音声ON/OFFの処理
     const stopAudioBtn =  document.getElementById('stop_audio');
@@ -54,6 +61,33 @@ document.addEventListener("turbolinks:load", function() {
     //   numberStartBtn += 1;
     //   clearInterval(count);
     // });
+
+    // エンドボタンを押した時の処理
+    endBtn.addEventListener("click", event => {
+      clearInterval(count);
+      // 瞑想開始時間と今の時間の差を計算
+      const startDate = localStorage.getItem('start_date');
+      let nowDate = Date.now();
+      let spendTime = Math.floor((nowDate - startDate)/1000);
+      alert(spendTime + '秒を記録する');
+
+      localStorage.removeItem('start_date') // localStrageの値をリセット
+      localStorage.removeItem('mindful_time') // localStrageの値をリセット
+
+      const data = {'time': spendTime, 'type_id': typeIdParams};
+      $.ajax({
+        url: "/mindfuls/",
+        type: "POST",
+        data: data,
+        success: function () {
+          console.log('success');
+        },
+        error: function () {
+          console.log('fails');
+        }
+      });
+
+    });
   
     // リセットボタンを押した時の処理
     resetBtn.addEventListener("click", event => {
@@ -91,10 +125,6 @@ document.addEventListener("turbolinks:load", function() {
       document.getElementById("sec").innerHTML = leftSec;
       //0になればカウントを止める
       if (leftTime <= 0) {
-        // Rails側に渡すmindfulness_typeのIDをクエリ文字列から取得
-        const searchParams = new URLSearchParams(window.location.search);
-        const typeIdParams = searchParams.get('mindfulness_type_id');
-        
         // Rails側に渡す値を格納
         const data = {'time': mindfulTime, 'type_id': typeIdParams};
         //音声再生

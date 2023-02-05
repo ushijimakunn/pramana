@@ -3,47 +3,68 @@
   <div class='m-3 text-3xl'> あなたの瞑想記録 </div>
 
   <div class='m-3 text-2xl'> 
-    合計日数：<%= current_user.cal_total_date %> d
+    実施日数：<%= current_user.cal_total_date %>d
   </div>
 
-  <div class='m-3 text-2xl'> 
-    合計時間：    
-    <%= current_user.cal_total_time[0]%>d
-    <%= current_user.cal_total_time[1] %>h
-    <%= current_user.cal_total_time[2]%>m
+  <div class="collapse collapse-arrow">
+    <input type="checkbox" />
+    <div class="collapse-title text-2xl">
+      合計時間：
+      <%= current_user.cal_total_time[0] %>d
+      <%= current_user.cal_total_time[1] %>h
+      <%= current_user.cal_total_time[2] %>m
+    </div>
+    <div class="collapse-content"> 
+      <table class="table">
+        <tbody>
+          <% current_user.cal_time_each_mindfulness_type.each do |k, v| %>
+            <tr>
+              <td> <%= k %> </td>
+              <td>: <%= v/24/60/60 %>d <%= v/60/60 %>h </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <table class="table">
-    <tbody>
-      <% current_user.cal_time_each_mindfulness_type.each do |k, v| %>
-        <tr>
-          <td> <%= k %> </td>
-          <td>: <%= v/24/60/60 %>d <%= v/60/60 %>h </td>
-        </tr>
+ <div class="collapse">
+    <input type="checkbox" />
+    <div class="collapse-title text-2xl">
+      あなたのランク：〇〇〇〇
+      <i class="pl-5 fa-solid fa-question"></i>
+    </div>
+    <div class="collapse-content"> 
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> 名称1</td>
+            <td> 説明</td>
+            <td> 目安時間</td>
+          </tr>
+          <tr>
+            <td> 名称2</td>
+            <td> 説明</td>
+            <td> 目安時間</td>
+          </tr>
+          <tr>
+            <td> 名称3</td>
+            <td> 説明</td>
+            <td> 目安時間</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class='w-9/12 text-center'>
+    <%= month_calendar events: @mindfuls do |date, mindfuls| %>
+      <%= date.day %>
+      <% mindfuls.each do |mindful| %>
+        <div><%= mindful.time/60 %>m <%= mindful.mindfulness_type.name %></div>
       <% end %>
-    </tbody>
-  </table>
-
-  <div class='m-3 text-2xl'> 
-    あなたのランク：
-  </div>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td> 名称</td>
-        <td> 説明</td>
-        <td> 目安時間</td>
-      </tr>
-    </tbody>
-  </table>
-
-  
-  <%= month_calendar events: @mindfuls do |date, mindfuls| %>
-    <%= date.day %>
-    <% mindfuls.each do |mindful| %>
-      <div><%= mindful.time/60 %>m <%= mindful.mindfulness_type.name %></div>
     <% end %>
-  <% end %>
+  </div>
 
 </div>
 
