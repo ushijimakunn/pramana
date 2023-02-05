@@ -3,17 +3,34 @@
 
 <div class='mx-20 my-5 flex flex-col items-center'>
   <% @mindfulness_types.each do |mindfulness_type| %>
-
     <div class="m-5 card card-side shadow-xl w-full max-w-4xl">
       <figure><%= image_tag 'mindfulness_woman.jpg', class: "w-56 min-h-full opacity-50"%></figure>
       <div class="card-body w-56">
-        <h2 class="card-title"><%= mindfulness_type.name %></h2>
+        <h2 class="card-title">
+          <%= mindfulness_type.name %>
+          <%= image_tag mindfulness_type.icon, class: "m-1 w-6 mix-blend-multiply"%>
+        </h2>
         <p><%= mindfulness_type.description %></p>
         <div class="card-actions justify-end">
           <%= link_to 'TRY', new_mindful_path(mindfulness_type_id: mindfulness_type.id), class: 'btn btn-secondary w-20' %>
         </div>
       </div>
     </div>
-
   <% end %>
+
+  <div class="m-5 card card-side shadow-xl w-full max-w-4xl">
+    <figure><%= image_tag 'mindfulness_woman.jpg', class: "w-56 min-h-full opacity-50"%></figure>
+    <div class="card-body w-56 overflow-hidden">
+      <div  class="mt-3 mr-3 p-1 bg-yellow-500 origin-top float-right text-center" style="transform:translateX(50%) rotate(45deg);" >
+        <div class="">Comming Soon!!</div>
+      </div>
+      <h2 class="card-title">
+        マインドフルネスストレス低減法（MBSR）
+      </h2>
+      <p> naiyounaiyounayiou </p>
+      <div class="card-actions justify-end">
+        <%= link_to 'TRY', "#", class: 'btn btn-secondary w-20' %>
+      </div>
+    </div>
+  </div>
 </div>

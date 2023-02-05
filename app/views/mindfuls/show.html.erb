@@ -5,7 +5,7 @@
   
   <div class='m-3 text-2xl'> 
     <%= @mindfuls.last.time / 60 %>m
-    <%= @mindfuls.last.time %>s
+    <%= @mindfuls.last.time % 60 %>s
     を完了 
   </div>
   

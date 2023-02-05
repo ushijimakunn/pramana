@@ -61,7 +61,7 @@
     <%= month_calendar events: @mindfuls do |date, mindfuls| %>
       <%= date.day %>
       <% mindfuls.each do |mindful| %>
-        <div><%= mindful.time/60 %>m <%= mindful.mindfulness_type.name %></div>
+        <%= image_tag mindful.mindfulness_type.icon, class: "m-1 w-8 mix-blend-multiply"%>
       <% end %>
     <% end %>
   </div>
