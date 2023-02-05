@@ -44,6 +44,24 @@ class User < ApplicationRecord
   # 瞑想時間の合計を計算（秒）
   def cal_total_time
     mindfuls = self.mindfuls.all
+    day = 0
+    hour = 0
+    min = 0
+    sec = 0
+    total_time_sec = 0
+    mindfuls.each do |mindful|
+      total_time_sec += mindful.time
+    end
+    day   = total_time_sec / 24 / 60 / 60
+    hour  = total_time_sec / 60 / 60
+    min   = total_time_sec / 60 % 60
+    sec   = total_time_sec % 60
+    return day, hour, min, sec
+  end
+
+  # 瞑想時間の合計を計算（秒）
+  def cal_total_time_sec
+    mindfuls = self.mindfuls.all
     total_time = 0
     mindfuls.each do |mindful|
       total_time += mindful.time
@@ -51,11 +69,12 @@ class User < ApplicationRecord
     return total_time
   end
 
+
   # 瞑想時間の内訳を計算(秒)
   def cal_time_each_mindfulness_type
     each_time_mind = {}
     hash = self.mindfuls.group(:mindfulness_type_id).sum(:time)
-    hash.each{| key,value|
+    hash.each{|key,value|
       each_time_mind[MindfulnessType.find(key).name] = value
     } 
     return each_time_mind
