@@ -10,7 +10,7 @@ document.addEventListener("turbolinks:load", function() {
     // 音声ON/OFFの処理
     const stopAudioBtn =  document.getElementById('stop_audio');
     const startAudioBtn =  document.getElementById('start_audio');
-    const audioFunc = document.getElementById('audio');
+    const audioFunc = document.getElementById('non_audio');
     stopAudioBtn.addEventListener("click", event => {
       $('#stop_audio').hide();
       $('#start_audio').show();
@@ -103,8 +103,6 @@ document.addEventListener("turbolinks:load", function() {
 
         localStorage.removeItem('start_date') // localStrageの値をリセット
         clearInterval(count);
-        document.getElementById('min').innerHTML = "0";
-        document.getElementById('sec').innerHTML = "0";
         alert('瞑想終了！！');
         // dataをmindfuls_controllerに渡し、mindfuls/createアクションを実施。
         $.ajax({
