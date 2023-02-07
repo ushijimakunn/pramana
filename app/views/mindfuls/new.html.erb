@@ -1,12 +1,18 @@
 <div class='m-5 flex flex-col items-center'>
 
   <div class='m-5 text-center'>
-    <div class='m-3 text-3xl' >方法</div>
-    <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+    <div class='m-3 text-3xl' >
+      <%= MindfulnessType.find(@type_id).name %>  
+    </div>
+    <p class='indent-4 max-w-xl' >
+      <%= MindfulnessType.find(@type_id).description %>  
+    </p>
   </div>
   <div class='m-5 text-center'>
-    <div class='m-3 text-3xl ' >心構え</div>
-    <p class='indent-4 max-w-xl' >テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+    <div class='m-3 text-3xl ' >方法</div>
+    <p class='indent-4 max-w-xl' >
+      <%= simple_format(MindfulnessType.find(@type_id).method) %>  
+    </p>
   </div>
   <div class='m-5 text-center font-mono'>
     <div class='m-3 text-2xl' >瞑想時間を選択</div>

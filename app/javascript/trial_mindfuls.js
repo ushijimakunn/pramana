@@ -63,8 +63,8 @@ document.addEventListener("turbolinks:load", function() {
         const audio = document.getElementById('audio');
         if (audio !== null) { audio.play(); }
         
-        clearInterval(count);
         alert('瞑想終了');
+        clearInterval(count);
         window.location.href = '/end';
       }else{
         document.getElementById('min').value=Math.floor(mindfulTime / 60);

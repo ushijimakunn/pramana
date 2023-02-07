@@ -1,6 +1,6 @@
-<div class="m-5 flex flex-col items-center">
+<div class="my-4 flex flex-col items-center">
   <div class='m-3 text-3xl'>ユーザー登録</div>
-  <%= form_with model: @user, class: 'w-full max-w-2xl', local: true do |f| %>
+  <%= form_with model: @user, class: 'w-full max-w-xl', local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="m-5 form-control">
       <%= f.label :name %>
@@ -18,8 +18,9 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'input input-bordered rounded-full', placeholder: "確認のため、もう一度誤入力ください" %>
     </div>
-    
-    <%= f.submit 'sign up', class: 'mx-5 w-25 btn btn-secondary rounded-full' %>
+    <div class="m-5 ">
+      <%= f.submit 'sign up', class: 'p-0 w-full btn btn-wide btn-secondary rounded-full' %>
+    </div>
   <% end %>
   <div class='text-center'>
     <%= link_to 'ログインページへ', login_path, class: 'mx-2 link' %>

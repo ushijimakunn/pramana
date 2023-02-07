@@ -6,6 +6,7 @@ class MindfulsController < ApplicationController
   
   def new
     @mindful = Mindful.new
+    @type_id = params[:mindfulness_type_id]
   end
 
   def create
