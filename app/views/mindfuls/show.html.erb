@@ -16,13 +16,14 @@
   <div class="m-3 card max-w-4xl bg-base-100 shadow-xl">
     <div class="card-body grid justify-items-center">
       <div class="text-xl items-center">
-        期待できる効果
+        「<%= @mindfuls.last.mindfulness_type.name %>」の効果
       </div>
       <ul class='my-2 '>
-        <li class='items-start'>If a dog chews?</li>
-        <li >If a dog chews shoes whose shoes does he choose?</li>
-        <li >If a dog chews shoes whose shoes does he choose?</li>
-        <li >If a dog chews shoes whose shoes does he choose?</li>
+        <% @mindfuls.last.mindfulness_type.mindfulness_effects.each do |effect| %>
+          <li class='items-start list-disc list-inside'>
+            <%= effect.name %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

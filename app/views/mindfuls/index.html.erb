@@ -30,34 +30,51 @@
 
  <div class="collapse">
     <input type="checkbox" />
-    <div class="collapse-title text-2xl">
+    <div class="collapse-title text-2xl text-center">
       あなたのランク：〇〇〇〇
       <i class="pl-5 fa-solid fa-question"></i>
     </div>
     <div class="collapse-content"> 
       <table class="table">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>説明</th>
+            <th>目安時間</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td> 名称1</td>
-            <td> 説明</td>
-            <td> 目安時間</td>
+            <td> vitakka（尋）</td>
+            <td> 注意を対象に向けられる状態</td>
+            <td> 数時間</td>
           </tr>
           <tr>
-            <td> 名称2</td>
-            <td> 説明</td>
-            <td> 目安時間</td>
+            <td> vicaka（伺）</td>
+            <td> 持続的に注意を向けられる状態 </td>
+            <td> 数十時間</td>
           </tr>
           <tr>
-            <td> 名称3</td>
-            <td> 説明</td>
-            <td> 目安時間</td>
+            <td> piti（喜）</td>
+            <td> 注意を向けることが自身の喜びとなる状態</td>
+            <td> 数百時間</td>
+          </tr>
+          <tr>
+            <td> sukha（楽）</td>
+            <td> 静寂と安らぎが訪れている状態</td>
+            <td> 数千時間</td>
+          </tr>
+          <tr>
+            <td> Ekaggata（心一境性）</td>
+            <td> 心が完全に１点に集中している状態</td>
+            <td> 数万時間</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class='w-9/12 text-center'>
+  <div class='mt-6 w-9/12 text-center'>
     <%= month_calendar events: @mindfuls do |date, mindfuls| %>
       <%= date.day %>
       <% mindfuls.each do |mindful| %>
