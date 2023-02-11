@@ -1,23 +1,24 @@
 <div class='m-3 flex flex-col items-center'>
 
-  <div class='my-5 text-center'>
-    <div class='text-3xl' >
+  <div class='mt-5 text-center'>
+    <div class='my-3 text-3xl' >
       <%= MindfulnessType.find(@type_id).name %>  
     </div>
-    <p class='indent-4 max-w-xl' >
+    <div class='mt-5 indent-4 max-w-xl' >
       <%= MindfulnessType.find(@type_id).description %>  
-    </p>
-  </div>
-  <div class='text-center'>
-    <div class='my-3 text-3xl ' >方法</div>
-    <div class='max-w-xl leading-loose' >
-      <%= simple_format(MindfulnessType.find(@type_id).method) %>  
     </div>
   </div>
-  <div class='my-3 text-center font-mono'>
+
+  <div class="card max-w-4xl bg-base-100 shadow-lg">
+    <div class="card-body grid justify-items-center text-center leading-loose">
+      <%= simple_format(MindfulnessType.find(@type_id).method) %>
+    </div>
+  </div>
+
+  <div class='mt-6 mb-3 text-center font-mono'>
     <div class='my-3 text-2xl' >瞑想時間を選択</div>
-      <input type="number" class='mx-3 input input-bordered w-28 text-3xl rounded-full' id='mindful_min' value="10">m
-      <input type="number" class='mx-3 input input-bordered w-28 text-3xl rounded-full' id='mindful_sec' value="0">s
+      <input type="number" class='mx-3 input input-bordered w-28 rounded-full' id='mindful_min' value="10">m
+      <input type="number" class='mx-3 input input-bordered w-28 rounded-full' id='mindful_sec' value="0">s
   </div>
 
   <span class="font-mono text-5xl">
@@ -40,6 +41,5 @@
     <input type="button" class='mx-4 w-20 rounded-full btn btn-accent' id='end_btn' value="END" >
     <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='reset_btn' value="RESET" >
   </div>
-
 
 </div>

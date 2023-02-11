@@ -117,4 +117,3 @@ MindfulnessEffect.create!(
     },
   ]
 )
-

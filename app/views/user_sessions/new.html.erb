@@ -7,14 +7,12 @@
     </div>
     <div class="m-5 form-control">
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "パスワード（3文字以上）" %>
+      <%= f.password_field :password, class: 'input input-bordered rounded-full', placeholder: "パスワード（7文字以上）" %>
     </div>
     <div class="m-5 ">
       <%= f.submit 'LOGIN', class: 'p-0 w-full btn btn-secondary rounded-full' %>
     </div>
   <% end %>
-  <div class='text-center'>
-    <%= link_to '登録ページへ', new_user_path, class: 'mx-2 link' %>
-    <%= link_to 'パスワードをお忘れの方はこちら', '#', class: 'mx-2 link' %>
-  </div>
+    <%= link_to 'パスワードをお忘れの方はこちら', '#', class: 'my-2 link' %>
+    <%= link_to 'アカウントを作成する', new_user_path, class: 'my-2 link' %>
 </div>

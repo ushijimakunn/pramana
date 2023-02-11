@@ -79,6 +79,17 @@ class User < ApplicationRecord
     } 
     return each_time_mind
   end
-  
+
+  # ランクを計算
+  def cal_rank
+    if cal_total_time[0] < 10
+      rank = 'アマチュア'
+    elsif cal_total_time[0] < 50
+      rank = 'プロ'
+    else
+      rank = '極み'
+    end
+    return rank
+  end
 end
 

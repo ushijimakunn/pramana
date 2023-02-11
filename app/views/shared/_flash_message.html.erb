@@ -1,10 +1,14 @@
 <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %> shadow-lg my-1">
-    <% if false %>  
-    
+    <% if current_page?(root_path) %>  
+      <% top_margin = "absolute mt-14 mx-1" %>
     <%else%>
-      <%= message %>
+      <% top_margin = "m-1" %>
     <% end %>  
+  <div class="alert alert-<%= message_type %> <%= top_margin %> bg-opacity-50 shadow-lg ">
+    <div>
+      <i class="fa-solid fa-circle-info"></i>
+      <%= message %>
+    </div>
   </div>
 <% end %>
 

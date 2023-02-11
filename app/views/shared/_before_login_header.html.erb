@@ -1,14 +1,16 @@
-<header class="top-0 left-0 right-0 z-10 bg-[#036635]">
-  <nav class="flex px-6 py-4">
-    <div class="flex-1">
-        <%= link_to 'pramana', root_path, class: 'text-white' %>
-    </div>
-    <div class="justify-end">
-        <%= link_to 'ログイン', login_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to '新規登録', new_user_path, class: 'mx-3 text-lg text-white hover:text-gray-300' %>
-        <%= link_to '#', class: 'mx-3 text-lg text-white hover:text-gray-300' do %>
-          <i class="fa-solid fa-circle-info"></i>
-        <% end %>
-    </div>
-  </nav>
+<header class="top-0 left-0 right-0 z-20 bg-[#036635] flex items-center px-6 py-4">
+  <div>
+      <%= image_tag 'meditate_2.png', class: "h-8 invert brightness-0 mr-2"%>
+  </div>
+  <div class='flex-1'>
+      <%= link_to 'pramana', root_path, class: 'text-white' %>
+  </div>
+  <div>
+      <%= link_to login_path, class: 'mx-3 text-lg text-white hover:text-gray-300' do %>
+        <i class="fa-regular fa-user"></i>
+      <% end %>
+      <%= link_to '#', class: 'mx-3 text-lg text-white hover:text-gray-300' do %>
+        <i class="fa-solid fa-circle-info"></i>
+      <% end %>
+  </div>
 </header>
