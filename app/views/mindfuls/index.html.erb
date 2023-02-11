@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class='mt-6 w-9/12 text-center'>
+  <div class='mt-6 w-full max-w-3xl text-center'>
     <%= month_calendar events: @mindfuls do |date, mindfuls| %>
       <%= date.day %>
       <% mindfuls.each do |mindful| %>
