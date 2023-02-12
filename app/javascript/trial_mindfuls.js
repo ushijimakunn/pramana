@@ -58,11 +58,12 @@ document.addEventListener("turbolinks:load", function() {
       if (!min) min=0;
       if (!sec) sec=0;
       let mindfulTime = min*60 + sec - 1;
-      if(mindfulTime <= 0){
+      if(mindfulTime == 0){
         // 音声再生
         const audio = document.getElementById('audio');
         if (audio !== null) { audio.play(); }
-        
+      }
+      if(mindfulTime <= 0){
         alert('瞑想終了');
         clearInterval(count);
         window.location.href = '/end';

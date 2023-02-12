@@ -127,13 +127,15 @@ document.addEventListener("turbolinks:load", function() {
       //残り時間を上書き
       document.getElementById("min").innerHTML = leftMin;
       document.getElementById("sec").innerHTML = leftSec;
+      if(leftTime == 0){
+        // 音声再生
+        const audio = document.getElementById('audio');
+        if (audio !== null) { audio.play(); }
+      }
       //0になればカウントを止める
       if (leftTime <= 0) {
         // Rails側に渡す値を格納
         const data = {'time': mindfulTime, 'type_id': typeIdParams};
-        //音声再生
-        const audio = document.getElementById('audio');
-        if (audio !== null) { audio.play(); };
 
         localStorage.removeItem('start_date') // localStrageの値をリセット
         clearInterval(count);
