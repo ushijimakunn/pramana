@@ -1,27 +1,36 @@
 <div class='my-4 mx-2 flex flex-col items-center'>
-  <div class='my-3 text-3xl'>瞑想終了</div>
-  <%= image_tag 'meditate_2.png', class: "w-16 rounded-full"%>
+  <div class='my-5 text-xl text-center'>
+    様々な思考がよぎったと思いますが、それで良いのです。<br>
+    継続することで、心の変化を感じましょう。
+  </div>
+  
+  <div class='mt-10 text-3xl text-center' > - このサービスの使い方 - </div>
+  <div class='my-3 max-w-2xl'>
+    新規登録（無料）をすることで、以下の項目ができるようになります。
+  </div>
+  
+  <div class="mb-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+    <div class="m-3 card max-w-md bg-base-100 shadow-md">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title underline underline-offset-4">1. メニューを選択</h2>
+        <%= image_tag 'guide_image/menu_image.jpg', class: "rounded-xl mt-10" %>
+      </div>
+    </div>
+    <div class="m-3 card max-w-md bg-base-100 shadow-md">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title underline underline-offset-4">2. 瞑想を実施</h2>
+        <%= image_tag 'guide_image/mindful_new_image.jpg', class: "rounded-xl mt-3" %>
+      </div>
+    </div>
+    <div class="m-3 card max-w-md bg-base-100 shadow-md">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title underline underline-offset-4">3. 日々の瞑想を記録</h2>
+        <%= image_tag 'guide_image/mindfulness_result_image.jpg', class: "rounded-xl mt-10" %>
+      </div>
+    </div>
+  </div>
 
-  <div class='mt-3 indent-4 max-w-xl' >
-    いかがでしたか？呼吸に意識を集中できましたでしょうか？
-    大切なことは、意識が逸れていることに気づくこと、気づいたら意識を戻すことです。
-  </div>
-  <div class='my-5 '>
-    <div class='my-3 text-2xl text-center' >継続あるのみ</div>
-    <p class='indent-4 max-w-xl' >
-      世界クラスの瞑想者（生涯瞑想時間は約12,000〜62,000時間）たちには、瞑想の最中、脳全体のガンマ派の急上昇が見られるそうです。
-      これは、「ゾーン」状態であることを意味しています。
-      瞑想によって、脳の構造が変化すると考えられており、現在も盛んに研究が行われています。
-    </p>
-  </div>
-    <div class='my-5 '>
-    <div class='my-3 text-2xl text-center' >このサービスでできること</div>
-    <p class='indent-4 max-w-xl' >
-      瞑想の方法を知り、効果を知り、日々の実績を記録する。
-      それだけのサービスです。
-      瞑想を継続して、心の変化を感じましょう。
-    </p>
-  </div>
   <%= link_to '新規登録', new_user_path, class: 'btn btn-secondary rounded-full' %>
+
 </div>
 

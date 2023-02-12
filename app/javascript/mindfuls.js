@@ -31,6 +31,8 @@ document.addEventListener("turbolinks:load", function() {
 
     // スタートボタンを押した時の処理
     startBtn.addEventListener("click", event => {
+      $('#end_btn').show();
+      $('#start_btn').hide();
       let mindfulMin = parseInt(document.getElementById('mindful_min').value);
       let mindfulSec = parseInt(document.getElementById('mindful_sec').value);
       if(!mindfulMin){ mindfulMin = 0 }
@@ -39,7 +41,7 @@ document.addEventListener("turbolinks:load", function() {
       // 音声再生
       const audio = document.getElementById('audio');
       if (audio !== null) { audio.play(); }
-      startBtn.disabled = true;
+      // startBtn.disabled = true;
 
       // カウントダウンの時間を表示,LocalStrageへ開始時間と瞑想時間を保存
       if (numberStartBtn==0) {
@@ -91,7 +93,9 @@ document.addEventListener("turbolinks:load", function() {
   
     // リセットボタンを押した時の処理
     resetBtn.addEventListener("click", event => {
-      startBtn.disabled=false;
+      // startBtn.disabled=false;
+      $('#end_btn').hide();
+      $('#start_btn').show();
       numberStartBtn = 0; //スタートボタン押した回数のリセット
       localStorage.removeItem('start_date') // localStrageの値をリセット
       localStorage.removeItem('mindful_time') // localStrageの値をリセット

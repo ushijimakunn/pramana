@@ -1,4 +1,4 @@
-<div class="hero z-20 h-[45rem] min-h-screen" style="background-image: url(<%= asset_path('mindfulness.jpg') %>)">
+<div class="hero z-20 h-[45rem] min-h-screen" style="background-image: url(<%= asset_path('mindfulness_photo/mindfulness.jpg') %>)">
   <div class="hero-overlay bg-opacity-50"></div>
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-full text-white">
@@ -14,32 +14,61 @@
 
 <div class='flex flex-col items-center '>
   <div class='m-5 max-w-2xl'>
-    <div class='m-3 text-center text-2xl' >今こそ必要</div>
-    <p class='indent-4'>
+    <div class='mt-20 text-center text-4xl' > - WHY 瞑想 - </div>
+    <p class='my-10 indent-4'>
       現代の一日に触れる情報量は、江戸時代の1年分、平安時代の一生分と言われています。
-      膨大な情報を前に、私たちの意識は常に外を向いています。
-      そんな時代こそ、内（自分）に目を向ける時間を確保することが必要ではないでしょうか？
+      膨大な情報を前に、私たちの意識は常に外を向き、心は気付かぬうちにすり減っています。
+      そんな時代だからこそ、内（自分）に目を向け、心と向き合う時間が必要ではないでしょうか？
     </p>
   </div>
+  
+  <div class='text-end text-xs text-gray-500'>
+    <%= image_tag 'mindfulness_photo/mindfulness-text-unsplash.jpg', class: "max-w-2xl" %>
+    <div>
+      Photo by 
+      <a href="https://unsplash.com/fr/@jblesly?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class='link'>Lesly Juarez</a>
+      from 
+      <a href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/DFtjXYd5Pto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class='link'>Unsplash</a>
+    </div>
+  </div>
+
   <div class='m-5 max-w-2xl'>
-    <div class='m-3 text-center text-2xl' >皆におすすめ</div>
-    <p class='indent-4'>
-      瞑想は、年齢や性別、生活環境などに関係なく、すべての人々が対象です。
-      特にいかに当てはまる人にはおすすめです。
-      <ul class='list-disc list-inside'>
-        <li>ストレスや不安を強く感じている人</li>
-        <li>集中力が続かない人</li>
-        <li>自分が何者なのかわからない人</li>
-      <ul>
+    <div class='mt-20 text-center text-4xl' > - WHO 瞑想 - </div>
+    <p class='my-10 indent-4'>
+      心への負担を感じている人は実践してみてください。ついつい他人と比較して落ち込んでしまう人、社会の厳しさに打ちひしがれている人、
+      自分のやりたいことがわからない人、自分のことが嫌いで必要以上に責めてしまう人、周りに対して攻撃的になってしまう人、そんな全ての人々に実践していただきたいです。
     </p>
   </div>
+
+  <div class='text-end text-xs text-gray-500'>
+    <%= image_tag 'mindfulness_photo/mindfulness-woman-unsplash.jpg', class: "max-w-2xl" %>
+    <div>
+      Photo by 
+      <a href="https://unsplash.com/@shot_by_teo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class='link'>Matteo Di Iorio</a>
+      from 
+      <a href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/DFtjXYd5Pto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class='link'>Unsplash</a>
+    </div>
+  </div>
+  
+
   <div class='m-5 max-w-2xl'>
-    <div class='m-3 text-center text-2xl' >誰でもできる</div>
-    <p class='indent-4'>
+    <div class='mt-20 text-center text-4xl' > - HOW 瞑想 - </div>
+    <p class='my-10 indent-4'>
       まずは、３分間、目を閉じ、呼吸に意識を集中させてみましょう。
       本サービスでは、いつくかの瞑想法を紹介しております。
       自分に合った瞑想法を見つけ、継続することで、心の変化を感じてみましょう。
     </p>
   </div>
-  <%= link_to '瞑想してみる', start_path, class: 'btn btn-secondary rounded-full' %>
+
+  <div class='text-end text-xs text-gray-500'>
+    <%= image_tag 'mindfulness_photo/horoke_man.jpg', class: "max-w-2xl" %>
+    <div>
+      Photo by 
+      <a href="https://pixabay.com/ja/users/sasint-3639875/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1782432" class='link'>Sasin Tipchai</a>
+      from 
+      <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1782432" class='link'>Pixabay</a>
+    </div>
+  </div>
+
+  <%= link_to '瞑想してみる', start_path, class: 'mt-10 btn btn-secondary rounded-full' %>
 </div>
