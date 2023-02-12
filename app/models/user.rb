@@ -82,12 +82,12 @@ class User < ApplicationRecord
 
   # ランクを計算
   def cal_rank
-    if cal_total_time[0] < 10
+    if cal_total_time[0] < 30
+      rank = '初心者'
+    elsif cal_total_time[0] < 1000
       rank = 'アマチュア'
-    elsif cal_total_time[0] < 50
-      rank = 'プロ'
     else
-      rank = '極み'
+      rank = 'プロ'
     end
     return rank
   end
