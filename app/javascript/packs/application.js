@@ -11,6 +11,7 @@ import "../../assets/stylesheets/application.css"
 import '@fortawesome/fontawesome-free/js/all';
 import "jquery"
 import "mindfuls"
+// import "mindfuls_ver2"
 import "trial_mindfuls"
 import "header"
 

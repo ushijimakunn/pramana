@@ -31,7 +31,7 @@ document.addEventListener("turbolinks:load", function() {
 
     // スタートボタンを押した時の処理
     startBtn.addEventListener("click", event => {
-      $('#end_btn').show();
+      $('#stop_btn').show();
       $('#start_btn').hide();
       let mindfulMin = parseInt(document.getElementById('mindful_min').value);
       let mindfulSec = parseInt(document.getElementById('mindful_sec').value);
@@ -53,16 +53,23 @@ document.addEventListener("turbolinks:load", function() {
       }
       // カウントダウン処理
       const localStartDate = localStorage.getItem('start_date');
+
+      console.log('最初に保存された時間: ' + localStartDate);
+      let startD = (Date.now() - localStartDate)/1000;
+      console.log( startD );
       const localMindfulTime = localStorage.getItem('mindful_time');
+      
       count = setInterval(function(){countFunc(localStartDate, localMindfulTime)},1000);
     });
   
     // ストップボタンを押した時の処理
-    // stopBtn.addEventListener("click", event => {
-    //   startBtn.disabled=false;
-    //   numberStartBtn += 1;
-    //   clearInterval(count);
-    // });
+    stopBtn.addEventListener("click", event => {
+      $('#stop_btn').hide();
+      $('#start_btn').show();
+      startBtn.disabled=false;
+      numberStartBtn += 1;
+      clearInterval(count);
+    });
 
     // エンドボタンを押した時の処理
     endBtn.addEventListener("click", event => {
@@ -93,8 +100,9 @@ document.addEventListener("turbolinks:load", function() {
   
     // リセットボタンを押した時の処理
     resetBtn.addEventListener("click", event => {
-      // startBtn.disabled=false;
+      startBtn.disabled=false;
       $('#end_btn').hide();
+      $('#stop_btn').hide();
       $('#start_btn').show();
       numberStartBtn = 0; //スタートボタン押した回数のリセット
       localStorage.removeItem('start_date') // localStrageの値をリセット
@@ -128,19 +136,19 @@ document.addEventListener("turbolinks:load", function() {
       document.getElementById("min").innerHTML = leftMin;
       document.getElementById("sec").innerHTML = leftSec;
       
-      // 音声再生
-      if(leftTime == 0){
-        const audio = document.getElementById('audio');
-        if (audio !== null) { audio.play(); }
-      }
       
       //0になればカウントを止める
       if (leftTime <= 0) {
         // Rails側に渡す値を格納
         const data = {'time': mindfulTime, 'type_id': typeIdParams};
-
+        
         localStorage.removeItem('start_date') // localStrageの値をリセット
         clearInterval(count);
+        
+        // 音声再生
+        const audio = document.getElementById('audio');
+        if (audio !== null) { audio.play(); }
+        
         alert('瞑想終了！！');
         // dataをmindfuls_controllerに渡し、mindfuls/createアクションを実施。
         $.ajax({
