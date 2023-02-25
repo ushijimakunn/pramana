@@ -12,7 +12,6 @@ document.addEventListener("turbolinks:load", function() {
     let leftTimeSec; // 残り時間 (秒)
     let startTime; // スタートした時刻（Date 型）
 
-
     // スタートボタンクリック時
     const startBtn =  document.getElementById('start_btn');
     startBtn.addEventListener('click', event => {

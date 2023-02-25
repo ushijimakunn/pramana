@@ -9,16 +9,16 @@ document.addEventListener("turbolinks:load", function() {
     // 音声ON/OFFの処理
     const stopAudioBtn =  document.getElementById('stop_audio');
     const startAudioBtn =  document.getElementById('start_audio');
-    const audioFunc = document.getElementById('non_audio');
+    const audioEl = document.getElementById('non_audio');
     stopAudioBtn.addEventListener("click", event => {
       $('#stop_audio').hide();
       $('#start_audio').show();
-      audioFunc.id = 'non_audio'
+      audioEl.id = 'non_audio'
     });
     startAudioBtn.addEventListener("click", event => {
       $('#stop_audio').show();
       $('#start_audio').hide();
-      audioFunc.id = 'audio'
+      audioEl.id = 'audio'
     });
     
     $('#trial_start_btn').on('click', function(){
@@ -40,8 +40,8 @@ document.addEventListener("turbolinks:load", function() {
     });
 
     $('#trial_end_btn').on('click', function(){
-      clearInterval(count);
       alert('瞑想終了');
+      clearInterval(count);
       window.location.href = '/end';
     });
 
@@ -58,19 +58,33 @@ document.addEventListener("turbolinks:load", function() {
       if (!min) min=0;
       if (!sec) sec=0;
       let mindfulTime = min*60 + sec - 1;
-      if(mindfulTime == 0){
-        // 音声再生
-        const audio = document.getElementById('audio');
-        if (audio !== null) { audio.play(); }
-      }
       if(mindfulTime <= 0){
-        alert('瞑想終了');
+        document.getElementById('min').value = 0 ; 
+        document.getElementById('sec').value = 0 ;
+        audioToAlert();
         clearInterval(count);
-        window.location.href = '/end';
       }else{
         document.getElementById('min').value=Math.floor(mindfulTime / 60);
         document.getElementById('sec').value=Math.floor(mindfulTime % 60);
       }    
     }
+    
+    // 音声再生関数
+    function audioFunc() {
+      return new Promise(resolve => {
+        const audio = document.getElementById('audio');
+        if (audio !== null) { audio.play();}
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    }
+    
+    async function audioToAlert() {
+      await audioFunc();
+      alert('瞑想終了');
+      window.location.href = '/end';
+    }
+
   }
 });
