@@ -17,31 +17,30 @@ document.addEventListener("turbolinks:load", function() {
     // 音声ON/OFFの処理
     const stopAudioBtn =  document.getElementById('stop_audio');
     const startAudioBtn =  document.getElementById('start_audio');
-    const audioFunc = document.getElementById('non_audio');
+    const audioEl = document.getElementById('non_audio');
     stopAudioBtn.addEventListener("click", event => {
       $('#stop_audio').hide();
       $('#start_audio').show();
-      audioFunc.id = 'non_audio'
+      audioEl.id = 'non_audio'
     });
     startAudioBtn.addEventListener("click", event => {
       $('#stop_audio').show();
       $('#start_audio').hide();
-      audioFunc.id = 'audio'
+      audioEl.id = 'audio'
     });
-
+    
     // スタートボタンを押した時の処理
     startBtn.addEventListener("click", event => {
-      $('#stop_btn').show();
+      $('#end_btn').show();
       $('#start_btn').hide();
       let mindfulMin = parseInt(document.getElementById('mindful_min').value);
       let mindfulSec = parseInt(document.getElementById('mindful_sec').value);
       if(!mindfulMin){ mindfulMin = 0 }
       if(!mindfulSec){ mindfulSec = 0 }
       let mindfulTime = mindfulMin * 60 + mindfulSec;
+
       // 音声再生
-      const audio = document.getElementById('audio');
-      if (audio !== null) { audio.play(); }
-      // startBtn.disabled = true;
+      audioFunc();
 
       // カウントダウンの時間を表示,LocalStrageへ開始時間と瞑想時間を保存
       if (numberStartBtn==0) {
@@ -141,29 +140,42 @@ document.addEventListener("turbolinks:load", function() {
       if (leftTime <= 0) {
         // Rails側に渡す値を格納
         const data = {'time': mindfulTime, 'type_id': typeIdParams};
-        
         localStorage.removeItem('start_date') // localStrageの値をリセット
         clearInterval(count);
-        
-        // 音声再生
-        const audio = document.getElementById('audio');
-        if (audio !== null) { audio.play(); }
-        
-        alert('瞑想終了！！');
-        // dataをmindfuls_controllerに渡し、mindfuls/createアクションを実施。
-        $.ajax({
-          url: "/mindfuls/",
-          type: "POST",
-          data: data,
-          success: function (data) {
-            console.log('success');
-          },
-          error: function (data) {
-            console.log('fails');
-          }
-        });
+        // 音声再生,アラート発生,データ保存
+        audioToAlertToSendData(data);
       }
     }
+    
+    // 音声再生関数
+    function audioFunc() {
+      return new Promise(resolve => {
+        const audio = document.getElementById('audio');
+        if (audio !== null) { audio.play();}
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    }
+    
+    // オーディオを再生後、アラートを出し、瞑想データを保存する
+    async function audioToAlertToSendData(data) {
+      await audioFunc();
+      alert('瞑想終了');
+      // dataをmindfuls_controllerに渡し、mindfuls/createアクションを実施。
+      $.ajax({
+        url: "/mindfuls/",
+        type: "POST",
+        data: data,
+        success: function (data) {
+          console.log('success');
+        },
+        error: function (data) {
+          console.log('fails');
+        }
+      });
+    }
+
   }
 });
 
