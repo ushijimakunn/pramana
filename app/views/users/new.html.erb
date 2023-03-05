@@ -1,6 +1,6 @@
 <div class="my-4 flex flex-col items-center">
   <div class='m-3 text-3xl'>ユーザー登録</div>
-  <%= form_with model: @user, class: 'w-full max-w-xl', local: true do |f| %>
+  <%= form_with url: signup_path, model: @user, class: 'w-full max-w-xl', local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="m-5 form-control">
       <%= f.label :name %>

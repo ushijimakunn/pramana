@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root to: 'static_pages#top'
   get 'start', to: 'trial_mindfuls#start'
   get 'end', to: 'trial_mindfuls#end'
-  get 'start', to: 'mindfuls#start'
-  get 'end', to: 'mindfuls#end'
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
 
   # ログインユーザの瞑想実施機能
   resources :mindfuls, only: %i[index new create show]
@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  resources :users, only: %i[new create]
+  # resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
 end
