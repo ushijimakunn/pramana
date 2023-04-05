@@ -21,10 +21,10 @@
       <input type="number" class='mx-3 input input-bordered w-28 rounded-full' id='mindful_sec' value="0">s
   </div>
 
-  <span class="font-mono text-5xl">
+  <%# <span class="font-mono text-5xl">
     <span id='min'>00</span>m
     <span id='sec'>00</span>s
-  </span>
+  </span> %>
     <button class="my-3" id='stop_audio' style='display: none;'>
       <i class="fa-solid fa-volume-high fa-xl"></i>
     </button>
@@ -35,12 +35,16 @@
 
      <%= audio_tag 'tin.mp3', id: 'non_audio' %>
 
+     <%= video_tag '/videos/bg_video.mp4', loop: true, id: 'bg_video', class: 'fixed top-0 left-0 w-full h-full object-cover z-0 pointer-events-none opacity-5' %>
+
   <div class='my-2 flex flex-row items-center'> 
     <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='start_btn' value="START" >
     <input type="button" class='mx-4 w-20 rounded-full btn btn-accent' id='stop_btn' value="STOP" style='display: none;'>
     <input type="button" class='mx-4 w-20 rounded-full btn btn-accent' id='end_btn' value="END" style='display: none;'>
-    <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='reset_btn' value="RESET" >
+    <input type="button" class='mx-4 w-20 rounded-full btn btn-secondary' id='reset_btn' value="RESET" style='display: none;'>
   </div>
+
+
 
 </div>
 
