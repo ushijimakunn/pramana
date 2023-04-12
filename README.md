@@ -1,7 +1,8 @@
-# [pramana(プラマーナ)](https://pramana.herokuapp.com/)
+# サービス名：pramana(プラマーナ)
 
 <img width="780" alt="image" src="https://user-images.githubusercontent.com/98957780/231355139-9709ae9a-022e-42b3-8ada-a6ef5f3ca879.png">
 
+サービスURL ：　https://pramana.herokuapp.com/
 
 # サービス概要
 
